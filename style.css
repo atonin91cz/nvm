@@ -1,0 +1,272 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: transparent !important;
+  width: 1800px;
+  height: 1080px;
+}
+
+#stream-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Tennis Ball */
+#ball {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  bottom: 100px;
+  left: 200px;
+  transition: all 0.5s ease-out;
+  z-index: 1000;
+}
+
+#ball-model {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #ffff00;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2),
+    inset -15px -15px 30px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+#ball-model .face {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+}
+
+#ball-model .eye {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #333;
+  border-radius: 50%;
+  top: 30px;
+}
+
+#ball-model .eye.left {
+  left: 20px;
+}
+
+#ball-model .eye.right {
+  right: 20px;
+}
+
+#ball-model .mouth {
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  border-bottom: 4px solid #333;
+  border-radius: 0 0 50% 50%;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s;
+}
+
+/* Smiling state */
+.talking #ball-model .mouth {
+  width: 50px;
+  height: 25px;
+  border-radius: 50%;
+  border-bottom: 4px solid #333;
+  border-top: none;
+}
+
+/* Mluvící bublina */
+#speech-bubble {
+  position: absolute;
+  background: white;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 300px;
+  min-width: 150px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#speech-bubble.show {
+  opacity: 1;
+}
+
+#bubble-text {
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+}
+
+.bubble-tail {
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid white;
+}
+
+/* Efekty */
+#jump-effect {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(0, 255, 0, 0.3) 0%, transparent 70%);
+  z-index: 998;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#jump-effect.active {
+  opacity: 1;
+}
+
+#dance-effect {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 100, 255, 0.3) 0%,
+    transparent 70%
+  );
+  z-index: 900;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#dance-effect.active {
+  opacity: 1;
+}
+
+/* Pohybové třídy */
+.walking {
+  animation: walk-cycle 0.8s infinite ease-in-out;
+}
+
+.jumping {
+  animation: jump 0.8s ease-out;
+}
+
+.dancing {
+  animation: dance-move 1.2s infinite;
+}
+
+@keyframes walk-cycle {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(10px) translateY(-15px) rotate(5deg);
+  }
+  50% {
+    transform: translateX(20px) translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateX(10px) translateY(15px) rotate(-5deg);
+  }
+}
+
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-120px) scale(1.1);
+  }
+}
+
+@keyframes dance-move {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-15deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(0deg) scale(1.3);
+  }
+  75% {
+    transform: rotate(15deg) scale(1.1);
+  }
+}
+
+/* Ovládací panel */
+.control-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+  overflow: hidden;
+  border: 2px solid #28a745;
+}
+
+.panel-header {
+  padding: 12px 15px;
+  background: #28a745;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+}
+
+.panel-header:hover {
+  background: #218838;
+}
+
+.panel-header h5 {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.panel-content {
+  padding: 15px;
+  display: block;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.panel-collapsed .panel-content {
+  display: none;
+}
+
+/* Tlačítka */
+.btn-group .btn {
+  transition: all 0.2s;
+}
+
+.btn-group .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responzivita */
+@media (max-width: 1200px) {
+  .control-panel {
+    width: 280px;
+  }
+}
