@@ -3,103 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ton1ceq Tennis Ball - Stream Assistant</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <title>Ton1ceq Stream Ball</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Hlavní scéna -->
     <div id="stream-container">
-      <!-- Tennis Ball -->
+      <div id="monitor-crack" class="monitor-crack"></div>
       <div id="ball">
         <div id="ball-model">
+          <div class="hand left"></div>
+          <div class="hand right"></div>
+          <div class="bubble"></div>
+          <div class="bubble-stains" id="bubble-stains"></div>
           <div class="face">
-            <div class="eye left"></div>
-            <div class="eye right"></div>
+            <div class="eye left"><div class="tear"></div></div>
+            <div class="eye right"><div class="tear"></div></div>
             <div class="mouth"></div>
+            <div class="tongue"></div>
+            <div class="blush left"></div>
+            <div class="blush right"></div>
           </div>
+          <div class="butt"></div>
         </div>
       </div>
 
-      <!-- Mluvící bublina -->
-      <div id="speech-bubble" class="d-none">
-        <div id="bubble-text"></div>
+      <div id="speech-bubble">
         <div class="bubble-tail"></div>
-      </div>
-
-      <!-- Efekty -->
-      <div id="jump-effect" class="d-none"></div>
-      <div id="dance-effect" class="d-none"></div>
-    </div>
-
-    <!-- Ovládací panel -->
-    <div id="control-panel" class="control-panel">
-      <div class="panel-header" onclick="togglePanel()">
-        <h5>Ovládání Míčku <i class="fas fa-chevron-down"></i></h5>
-      </div>
-      <div class="panel-content">
-        <div class="mb-3">
-          <label class="form-label">Barva míčku:</label>
-          <input
-            type="color"
-            id="color-ball"
-            value="#FFFF00"
-            class="form-control form-control-color"
-          />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Vlastní text:</label>
-          <input
-            type="text"
-            id="custom-text"
-            class="form-control"
-            placeholder="Napiš co má míček říct"
-          />
-        </div>
-        <div class="btn-group w-100 mb-3">
-          <button class="btn btn-primary" onclick="window.ballCommand('walk')">
-            <i class="fas fa-walking"></i> Chůze
-          </button>
-          <button class="btn btn-info" onclick="window.ballCommand('talk')">
-            <i class="fas fa-comment"></i> Mluvit
-          </button>
-          <button class="btn btn-warning" onclick="window.ballCommand('dance')">
-            <i class="fas fa-music"></i> Tanec
-          </button>
-        </div>
-        <div class="btn-group w-100">
-          <button class="btn btn-success" onclick="window.ballCommand('jump')">
-            <i class="fas fa-arrow-up"></i> Skok
-          </button>
-          <button
-            class="btn btn-secondary"
-            onclick="window.ballCommand('reset')"
-          >
-            <i class="fas fa-home"></i> Domů
-          </button>
-        </div>
-        <div class="mt-3 form-check">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            id="auto-mode"
-            checked
-          />
-          <label class="form-check-label" for="auto-mode"
-            >Automatické chování</label
-          >
-        </div>
+        <div id="bubble-text">Ahoj chat!</div>
       </div>
     </div>
 
-    <!-- Bootstrap JS + Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-    <!-- Vlastní JS -->
+    <div id="control-panel">
+      <h3>Ovládací Panel</h3>
+      <div class="control-section">
+        <label>
+          <input type="checkbox" id="auto-mode" checked /> Automatický režim
+        </label>
+      </div>
+      <div class="control-section">
+        <label>Barva smajlíka:</label>
+        <input type="color" id="color-picker" value="#ffff00" />
+      </div>
+      <div class="control-buttons">
+        <button class="control-btn" data-action="wink">Mrknout</button>
+        <button class="control-btn" data-action="jump">Skok</button>
+        <button class="control-btn" data-action="happy">Úsměv</button>
+        <button class="control-btn" data-action="lol">LOL Smích</button>
+        <button class="control-btn" data-action="surprised">Překvapení</button>
+        <button class="control-btn" data-action="rotate">Rotace</button>
+        <button class="control-btn" data-action="wave">Mávat</button>
+        <button class="control-btn" data-action="tap">Ťuknout</button>
+        <button class="control-btn" data-action="vibrate">Vibrovat</button>
+        <button class="control-btn" data-action="bubble-gum">Bublina</button>
+        <button class="control-btn" data-action="talk">Promluvit</button>
+        <button class="control-btn" data-action="blink">Mrknout oběma</button>
+        <button class="control-btn" data-action="show-butt">
+          Ukázat zadek
+        </button>
+      </div>
+      <div class="control-section">
+        <input type="text" id="chat-input" placeholder="Napiš zprávu..." />
+        <button
+          class="control-btn"
+          id="send-chat"
+          style="margin-top: 5px; width: 100%"
+        >
+          Odeslat
+        </button>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
