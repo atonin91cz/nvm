@@ -107,7 +107,7 @@ const miniActions = [
   },
   {
     name: "talk",
-    duration: 3000,
+    duration: 1000,
     messages: [
       "Ahoj chat! 👋",
       "Jak se máte? 😊",
@@ -116,6 +116,11 @@ const miniActions = [
       "Ton1ceq je nejlepší! ⚡",
       "Kdo mi pošle follow? ❤️",
       "Kdo mi pošle Donate? ❤️",
+      "Nečum mišáku :D ? ",
+      
+      "Co podniknem? ❤",
+       "Kdo mi pošle follow? ❤️",
+      "Už vás začínám srát co?? ❤️",
       "Pěkný stream! 📺",
       "Haha, to je legrace! 😄",
       "LUL 😂",
